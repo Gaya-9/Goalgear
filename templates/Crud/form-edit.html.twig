@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1> Modification d'un produit</h1>
+
+{#{ form(formBook) }#}
+
+{{ form_start(formProduit) }}
+<div class="row">
+    <div class="col-6">
+        {{ form_row(formProduit.nom) }}
+    </div>
+    <div class="col-6">
+        {{ form_row(formProduit.prix) }}
+    </div>
+    <div class="col-12">
+        {{ form_row(formProduit.description) }}
+    </div>
+    
+    <div class="col-6">
+        {{ form_row(formProduit.categorie) }}
+    </div>
+   
+    <div class="col-12">
+        {{ form_row(formProduit.imageFile) }}
+    </div>
+   
+</div>
+<input type="submit" class="btn btn-success mt-2 mb-4" name="modifier" value="Modifier" href="{{ path('produit_list') }}"/>
+ 
+{{ form_end(formProduit) }}
+
+
+
+
+
+{% endblock %}

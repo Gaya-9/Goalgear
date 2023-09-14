@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container mt-4 mb-4">
+
+   
+
+    {# Message flash lors de la création d'un livre #}
+    {% for message in app.flashes('produit_ajout_success') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Félicitation</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    {# Message flash lors de la modification d'un livre #}
+    {% for message in app.flashes('produit_edit_success') %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Félicitation</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    {# Message flash lors de la suppression d'un livre #}
+    {% for message in app.flashes('produit_delete_success') %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Félicitation</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Description</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Prix (€)</th>
+                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+            <tr>
+                <th scope="row">{{ produit.id }}</th>
+                <td>{{ produit.nom }}</td>
+
+                {% if produit.description|length >= 50 %}
+                    <td>{{ produit.description|slice(0, 47) }}...</td>
+                {% else %}
+                    <td>{{ produit.description }}</td>
+                {% endif %}
+
+                <td>{{ book.categorie.nom|default('') }}</td>
+
+                {# Si le prix n'est pas vide ou null - on affiche le prix - sinon on affiche 'N.C' #}
+                {% if produit.prix %}
+                    <td>{{ produit.prix ~ " €" }}</td>
+                {% else %}
+                    <td>N.C</td>
+                {% endif %}
+
+                <
+                <td>
+                    {# <a href="{{ path('produit_detail', {id: produit.id}) }}" class="btn btn-success btn-xs">Afficher</a> #}
+                    <a href="{{ path('produit_modif', {id: produit.id}) }}" class="btn btn-primary btn-xs">Modifier</a>
+                    <a href="{{ path('produit_delete', {id: produit.id}) }}" onclick="return confirm('Etes-vous sure de vouloir supprimer ce livre ?')" class="btn btn-danger btn-xs">Supprimer</a>
+                    <a href="{{ path('produit_ajout' , {id: produit.id}) }}" class="btn btn-warning btn-xs">Ajouter un produit</a><br>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

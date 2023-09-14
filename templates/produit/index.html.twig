@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+{% block styles %}
+<style>
+
+.banner-container {
+  position: relative;
+}
+
+.quote-overlay {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.0);
+  padding: 20px;
+  text-align: left;
+  color: yellow;
+  
+}
+
+.quote-text {
+  font-size: 28px;
+  font-style: italic;
+}
+
+</style>
+
+{% endblock %}
+
+{% block title %}Tout les produits{% endblock %}
+
+{% block body %}
+
+
+
+<div class="banner-container">
+  <img src="https://wallpaperaccess.com/full/2244837.jpg" alt="Image de fond" width="100%" height="400px">
+  <div class="quote-overlay">
+    <h1 class="quote-text">Le football à portée de clic : Vivez votre passion avec style et performance !</h1>
+  </div>
+</div><br>
+
+
+<div class="d-flex align-items-center justify-content-center m-5">
+  <h1 class="text-center my-title">Retrouvez tous nos produits</h1>
+</div>
+
+
+
+<!-- Si l'utilisateur est un admin-->
+
+{% if is_granted('ROLE_ADMIN') %}
+<div class="text-center">
+  <a href="{{ path('produit_list') }}" class="btn btn-success btn-xs mb-4 d-inline-block mx-2">Gestion du stock</a>
+</div>
+
+
+
+{% endif %}
+
+
+
+<section class="py-5 bg-light">
+            <div class="container px-4 px-lg-5 mt-5">
+                
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                
+          {% for produit in produits %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            
+                            <!-- Product image-->
+                            <img class="card-img-top" src="{{ asset ('/images/produits/'~ produit.imageName) }} " width="300" height="200"  alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{ produit.nom }}</h5>
+                                    <!-- Product reviews-->
+                                   
+                                    <!-- Product price-->
+                                    {# <span class="text-muted text-decoration-line-through">$20.00</span> #}
+                                    {{ produit.prix }} €
+                                    <p>{{ produit.description }}</p>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                {# <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('produit_detail', {id: annonce.id}) }}">Afficher</a></div><br> #}
+                                <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="{{ path('cart_add', {id: produit.id}) }}">Ajouter au panier</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    </section>
+
+
+
+        
+{% endblock %}

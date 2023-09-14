@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center">
+    <form method="post" class="text-center">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
+        <div class="form-group row">
+            <label for="inputEmail" class="col-sm-6 col-form-label">Email</label>
+            <div class="col-m-6">
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control form-control-sm" autocomplete="email" required autofocus>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-6 col-form-label">Mot de passe</label>
+            <div class="col-m-6">
+                <input type="password" name="password" id="inputPassword" class="form-control form-control-sm" autocomplete="current-password" required>
+            </div>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+        #}
+
+        <button class="btn btn-primary btn-sm mt-4" type="submit">
+            Se connecter
+        </button>
+        {# <a href="{{ path('forgot_password') }}">Réinitialiser le mot de passe</a> #}
+    </form>
+</div>
+
+<div class="container text-center mb-5">
+    <a href="{{ path('forgot_password') }}">Mot de passe oublié ?</a>
+</div>
+{% endblock %}
+

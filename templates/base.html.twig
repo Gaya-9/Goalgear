@@ -1,16 +1,302 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{% block title %}My Page{% endblock %}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ asset('home.css') }}" rel="stylesheet" />
+
+        {% block styles %}{% endblock %}
+        
+      
+
+        {% block header %}
+        <!-- Header-->
+        <header>
+
+        <div class="logo">
+
+
+            <a href="{{ path('home') }}"><img src="image logo.png" alt="logo" width="100px" height="80px"></a>
+
+        </div>
+
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_quisommes') }}">Qui sommes nous ?</a>
+                </li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+
+                <li>
+                    <a href="{{ path('all_products') }}">Gestion du stock</a>
+                </li>
+                {% else %}
+                 <li>
+                    <a href="{{ path('all_products') }}">Boutique</a>
+                </li>
+
+                {% endif %}
+
+
+                <li>
+                    <a href="{{ path('app_contact') }}">Contact</a>
+                </li>
+
+                {% if app.user %}
+                <li>
+                <a href="{{ path('app_logout',) }}" class="btn btn-danger btn-xs">Déconnexion</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ path('app_register') }}">S'inscrire</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_login') }}"><i class="fa-solid fa-user fa-2xl"></i></a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="{{ path('app_cart') }}"><i class="fa-solid fa-cart-shopping fa-2xl"></i></i></a>
+                    {% set panier = app.session.get('panier') %}
+                    {% set qtePanier = 0 %}
+                    {% for quantite in panier %}
+                       {% set qtePanier = qtePanier + quantite %}
+                    {% endfor %}   
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{ qtePanier }}</span>
+                </li>
+
+
+
+            </ul>
+        </nav>
+
+    </header>
         {% endblock %}
 
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
+
+    <body>    
+
+        {% block body %}
+        
+            <main>
+
+           {# {% if app.user %}
+             <h1>Bravo, vous étes connecté !</h1>
+           {% endif %} #}
+
+        
+
+
+ <!-- Image-->
+
+<div style="position: relative;">
+    <div style="position: absolute; top: 30%; left: 10%; transform: translate(0, -50%); text-align: left;">
+        <h1 style="color: orange; font-size: 28px; font-family: Georgia">Bien plus qu'un simple jeu, le football est une passion<br> qui unit les fans du monde entier</h1>
+    </div>
+    <img class="img" src="https://wallpaperaccess.com/full/2538495.jpg" alt="image foot" style="width: 100%; height: 550px;">
+</div>
+
+
+
+
+
+
+
+<!--carousel-->
+
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000">
+  <div class="container">
+  <div class="row justify-content-center d-flex">
+    <div class="col-lg-12">
+      <div class="carousel-wrapper">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://img1.wallspic.com/previews/3/8/9/7/3/137983/137983-ballon_de_soccer-2018_la_coupe_du_monde-graphique-bresil_lequipe_nationale_de_football-550x310.jpg" width="600" height="400" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+              <img src="https://media.istockphoto.com/id/939168954/fr/photo/homme-isol%C3%A9-joueur-de-football.jpg?s=612x612&w=0&k=20&c=c58NWugcC4rghnAm67-gAksu7tAQUoj2mBZ2P15jmiA=" width="600" height="400" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+              <img src="https://tse1.mm.bing.net/th?id=OIP.hz3R8Vsncaod0jz2N1q-BQHaG1&pid=Api&P=0" width="600" height="400" alt="Slide 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!--titre-->
+<div class="d-flex align-items-center justify-content-center m-5">
+  <h1 class="text-center my-title">Retrouvez toutes nos catégories des produits</h1>
+</div>
+
+
+
+
+
+
+
+<!--les cards-->
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                        <img src="https://media.istockphoto.com/id/1404635567/fr/photo/gros-plan-dune-paire-de-chaussures-de-football-en-cuir-noir-isol%C3%A9es-sur-fond-blanc.webp?b=1&s=170667a&w=0&k=20&c=79Q8PewWZeR5GGRr2qHijviZunOI55cHEfF08xlQxyQ="
+                            class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Chaussures</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <a href="{{ path('all_products') }}" class="btn btn-primary">Découvrir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.NQfuXwvP-YG16M0dkA_s-wHaHa&pid=Api&P=0"
+                            class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Gants</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <a href="{{ path('all_products') }}" class="btn btn-primary">Découvrir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Espace entre les lignes -->
+    <div class="mt-3"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                        <img src="https://tse1.mm.bing.net/th?id=OIP.ayQUR3yStys7nvPsUmuEVgHaHa&pid=Api&P=0"
+                            class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Tenues</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <a href="{{ path('all_products') }}" class="btn btn-primary">Découvrir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                        <img src="https://tse2.mm.bing.net/th?id=OIP.7katrBK79NNvATs3izCoBgHaHa&pid=Api&P=0"
+                            class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ballons</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <a href="{{ path('all_products') }}" class="btn btn-primary">Découvrir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br><br>
+
+
+ {% endblock %}
+       
+
+
+
+
+        <!-- Footer-->
+
+{% block footer %}
+<footer style="height: 200px; background-color: #007bff; color: #ffffff;">
+    <div class="container-fluid">
+        <div class="row text text-white">
+            <div class="col-md-4">
+                <h4>Liens</h4>
+                <ul class="list-group">
+                    <li class="list-group-item bg-transparent border-0 mb-2"><a href="/" class="text-white">Accueil</a></li>
+                    <li class="list-group-item bg-transparent border-0 mb-2"><a href="/all" class="text-white">Produits</a></li>
+                    <li class="list-group-item bg-transparent border-0 mb-2"><a href="/register" class="text-white">S'inscrire</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Contact</h4>
+                <ul class="list-group">
+                    <li class="list-group-item bg-transparent border-0 mb-2"><a href="tel:+123456789" class="text-white">Téléphone</a></li>
+                    <li class="list-group-item bg-transparent border-0 mb-2"><a href="mailto:contact@example.com" class="text-white">E-mail</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Réseaux sociaux</h4>
+                <ul class="list-group">
+                    <li class="list-group-item bg-transparent border-0 mb-2"><a href="https://www.facebook.com/votrepage" target="_blank" class="text-white"><i class="fa-brands fa-facebook fa-xl" style="color: #fff;"></i></a></li>
+                    <li class="list-group-item bg-transparent border-0 mb-2"><a href="https://www.instagram.com/votrecompte" target="_blank" class="text-white"><i class="fa-brands fa-instagram fa-xl" style="color: #fff;"></i></a></li>
+                    <!-- Ajoutez les liens vers d'autres réseaux sociaux ici -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+
+   
     </body>
 </html>
+
