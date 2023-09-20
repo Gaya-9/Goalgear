@@ -16,11 +16,11 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('home.css') }}" rel="stylesheet" />
 
-        {% block styles %}{% endblock %}
+{% block styles %}{% endblock %}
         
       
 
-        {% block header %}
+{% block header %}
         <!-- Header-->
         <header>
 
@@ -86,12 +86,12 @@
         </nav>
 
     </header>
-        {% endblock %}
+{% endblock %}
 
 
     <body>    
 
-        {% block body %}
+{% block body %}
         
             <main>
 
@@ -253,7 +253,7 @@
 </div><br><br>
 
 
- {% endblock %}
+{% endblock %}
        
 
 
@@ -295,13 +295,13 @@
 </footer>
 {% endblock %}
 
- {% block js %}
+{% block js %}
          <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         
-        {% endblock %}
+{% endblock %}
 
 
    
