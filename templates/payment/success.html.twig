@@ -1,12 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment Success</title>
-</head>
-<body>
-    <h1>Thank you for your payment!</h1>
-    <p>Your payment of {{ paymentAmount }} EUR was successfully processed.</p>
-    <p>Transaction ID: {{ transactionId }}</p>
-    <!-- Add any additional relevant information here -->
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Paiement Success!
+{% endblock %}
+
+{% block body %}
+<div class="container"> 
+    <h1 class="mb-4 mt-5">Merci {{ app.user.nom }} {{ app.user.prenom|capitalize }} pour votre achat !</h1>
+
+   <p>
+    Nous sommes ravis de vous informer que votre équipement de football est prêt à être récupéré dès maintenant dans notre magasin. Notre équipe dévouée est là pour vous accueillir et vous assister avec tout ce dont vous pourriez avoir besoin. N'hésitez pas à poser des questions ou à demander des conseils sur l'utilisation et l'entretien de votre nouvel équipement. Nous sommes là pour vous aider à profiter au maximum de votre expérience sur le terrain.
+</p>
+
+<p>
+    Rappel de garantie : N'oubliez pas que tous nos équipements de football sont couverts par une garantie de deux ans, qui inclut la garantie des pièces, pour votre tranquillité d'esprit. Votre satisfaction est notre priorité, et nous sommes là pour vous accompagner tout au long de votre pratique sportive avec Goalgear.
+</p>
+
+<p>
+    Nous espérons que votre nouvel équipement vous apportera des heures de plaisir et de réussite sur le terrain. Encore une fois, merci d'avoir choisi Goalgear pour votre achat. Nous sommes impatients de vous voir et de vous servir. Si vous avez d'autres besoins ou des préoccupations, n'hésitez pas à nous contacter.
+</p>
+
+<p>
+    Vous pouvez récupérer votre équipement aux horaires suivants :
+</p>    
+    <br>
+<div class="text text-success">
+    Du lundi au samedi : de 09h00 à 20h00 <br>
+    
+    Le dimanche : de 10h00 à 13h00
+
+</div>
+
+<p class="mb-5">
+    Service Clientèle Goalgear
+</p>
+
+</div>
+
+
+
+{% endblock %}

@@ -30,7 +30,7 @@ class ProduitController extends AbstractController
      */
     public function ajout(Request $request, ManagerRegistry $doctrine)
     {
-    //  $this->denyAccessUnlessGranted('ROLE_ADMIN');
+     $this->denyAccessUnlessGranted('ROLE_ADMIN');
      $produit= new Produit;
      
 
@@ -63,7 +63,7 @@ class ProduitController extends AbstractController
     public function modif($id, Request $request, ManagerRegistry $doctrine)
     {
         
-        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $produit = $doctrine->getRepository(Produit::class)->find($id);
         $formProduit = $this->createForm(ProduitType::class, $produit);
@@ -89,7 +89,7 @@ class ProduitController extends AbstractController
      */ 
     public function readAll(ManagerRegistry $doctrine)
     {
-        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         //dd($this->getUser()->getEmail());
 
@@ -108,7 +108,7 @@ class ProduitController extends AbstractController
      */
     public function supprimer($id, ManagerRegistry $doctrine)
     {
-    // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+    $this->denyAccessUnlessGranted('ROLE_ADMIN');
      
     $entityManager = $doctrine->getManager();
 
@@ -139,5 +139,39 @@ class ProduitController extends AbstractController
         'produits'=>$produits
     ]);
     }
+
+
+
+    /**
+     * @Route("/produit/{id}", name="produit_detail", requirements={"id":"\d+"})
+     */
+    public function detail($id, ManagerRegistry $doctrine)
+    {
+        
+        $produit = $doctrine->getRepository(Produit::class)->find($id);
+        
+
+        return $this->render("detail/detailproduit.html.twig",[
+            "produit"=>$produit
+        ]);
+    }
+
+
+    /**
+     * @Route("/products/category/{categorie}", name="products_by_category")
+     */
+    public function productsByCategory(Request $request, $categorie, \Doctrine\Persistence\ManagerRegistry $doctrine): Response
+    {
+        // Récupérer les produits en fonction de la catégorie (votre logique spécifique ici)
+        $produits = $doctrine->getRepository(Produit::class)->findByCategory($categorie);
+
+        // Passer les produits filtrés à votre vue pour les afficher
+        return $this->render('produit/produits_category.html.twig', [
+            'produits' => $produits, // Assurez-vous de transmettre $produits, pas $produit
+        ]);
+    }
+
+
+
 }
 

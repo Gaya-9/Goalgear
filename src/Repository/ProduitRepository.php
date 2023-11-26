@@ -45,4 +45,17 @@ class ProduitRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+
+
+public function findByCategory($category)
+{
+    return $this->createQueryBuilder('p')
+        ->join('p.categorie', 'c')
+        ->andWhere('c.nom = :category') // Supposons que 'nom' soit le champ qui identifie la catégorie
+        ->setParameter('category', $category)
+        ->getQuery()
+        ->getResult();
+}
 }

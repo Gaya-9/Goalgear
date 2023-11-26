@@ -53,9 +53,24 @@ ul a{
     display: flex;
     justify-content: center;
     margin-top: 3rem;
-  }
+  } 
 
-  
+#panier {
+    min-height: 80vh;  
+}
+#passwordforgot {
+    min-height: 80vh
+}
+
+#passwordReset {
+    min-height: 80vh;  
+}
+
+#passwordResetconfirmation {
+    min-height: 80vh;  
+}
+
+
 
 
 @media screen and (min-width: 768px) {

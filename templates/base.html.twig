@@ -26,8 +26,7 @@
 
         <div class="logo">
 
-
-            <a href="{{ path('home') }}"><img src="image logo.png" alt="logo" width="100px" height="80px"></a>
+            <a href="{{ path('home') }}"><img src="{{ asset('image logo.png') }}" alt="logo" width="100px" height="80px"></a>
 
         </div>
 
@@ -168,89 +167,79 @@
 <!--les cards-->
 
 <div class="container mt-3">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="row g-0">
-                    <div class="col-md-4 d-flex align-items-center justify-content-center">
-                        <img src="https://media.istockphoto.com/id/1404635567/fr/photo/gros-plan-dune-paire-de-chaussures-de-football-en-cuir-noir-isol%C3%A9es-sur-fond-blanc.webp?b=1&s=170667a&w=0&k=20&c=79Q8PewWZeR5GGRr2qHijviZunOI55cHEfF08xlQxyQ="
-                            class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Chaussures</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <a href="{{ path('all_products') }}" class="btn btn-primary">Découvrir</a>
-                        </div>
-                    </div>
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <img src="https://media.istockphoto.com/id/1404635567/fr/photo/gros-plan-dune-paire-de-chaussures-de-football-en-cuir-noir-isol%C3%A9es-sur-fond-blanc.webp?b=1&s=170667a&w=0&k=20&c=79Q8PewWZeR5GGRr2qHijviZunOI55cHEfF08xlQxyQ=" class="img-fluid rounded-start" alt="Image 1" width="250"  >
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Chaussures</h5>
+                    <p class="card-text">Découvrez l'alliance parfaite entre performance et style avec nos chaussures de football de pointe.
+                    Conçues pour les vrais passionnés du jeu, ces chaussures offrent une adhérence supérieure, un confort inégalé et une agilité optimale sur le terrain.
+                    Préparez-vous à performer au plus haut niveau avec ces chaussures de football professionnelles. Dominer le jeu, c'est maintenant une réalité.</p>
+                    
+                    <a href="{{ path('products_by_category', {'categorie': 'chaussures'}) }}" class="btn btn-primary">Découvrir</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="row g-0">
-                    <div class="col-md-4 d-flex align-items-center justify-content-center">
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.NQfuXwvP-YG16M0dkA_s-wHaHa&pid=Api&P=0"
-                            class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Gants</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <a href="{{ path('all_products') }}" class="btn btn-primary">Découvrir</a>
-                        </div>
-                    </div>
+    </div><br>
+
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.NQfuXwvP-YG16M0dkA_s-wHaHa&pid=Api&P=0" class="img-fluid rounded-start" alt="Image 2" width="250">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Gants</h5>
+                    <p class="card-text">Offrant une protection inégalée et une agilité exceptionnelle, nos gants de gardien sont le choix ultime des gardiens les plus exigeants.
+                     Conçus pour vous offrir une prise sûre et une confiance absolue lors de chaque arrêt, ces gants sont votre meilleur atout sur le terrain.
+                     Dominez votre zone de but avec assurance en portant ces gants de gardien de haute performance. L'élément essentiel pour des arrêts remarquables et une défense solide.</p>
+                    
+                    <a href="{{ path('products_by_category', {'categorie': 'gant'}) }}" class="btn btn-primary">Découvrir</a>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Espace entre les lignes -->
-    <div class="mt-3"></div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="row g-0">
-                    <div class="col-md-4 d-flex align-items-center justify-content-center">
-                        <img src="https://tse1.mm.bing.net/th?id=OIP.ayQUR3yStys7nvPsUmuEVgHaHa&pid=Api&P=0"
-                            class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Tenues</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <a href="{{ path('all_products') }}" class="btn btn-primary">Découvrir</a>
-                        </div>
-                    </div>
+    </div><br>
+
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <img src="https://tse1.mm.bing.net/th?id=OIP.ayQUR3yStys7nvPsUmuEVgHaHa&pid=Api&P=0" class="img-fluid rounded-start" alt="Image 3" width="200">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Tenues</h5>
+                    <p class="card-text">Exprimez votre style sur le terrain avec nos tenues de football haut de gamme.
+                     Conçues pour l'alliance parfaite entre élégance et performance, nos tenues vous offrent un confort exceptionnel tout en vous permettant de briller lors de chaque match.
+                     Que ce soit pour l'entraînement ou le match, nos tenues de football sont conçues pour vous offrir un équilibre parfait entre style et performance, vous permettant de vous concentrer sur votre jeu sans compromis.</p>
+                    
+                    <a href="{{ path('products_by_category', {'categorie': 'tenue'}) }}" class="btn btn-primary">Découvrir</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="row g-0">
-                    <div class="col-md-4 d-flex align-items-center justify-content-center">
-                        <img src="https://tse2.mm.bing.net/th?id=OIP.7katrBK79NNvATs3izCoBgHaHa&pid=Api&P=0"
-                            class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Ballons</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <a href="{{ path('all_products') }}" class="btn btn-primary">Découvrir</a>
-                        </div>
-                    </div>
+    </div><br>
+
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.7katrBK79NNvATs3izCoBgHaHa&pid=Api&P=0" class="img-fluid rounded-start" alt="Image 4" width="250">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Ballons</h5>
+                    <p class="card-text">Explorez notre gamme de ballons de football offrant une performance supérieure et une sensation de jeu inégalée.
+                     Conçus pour répondre aux normes les plus exigeantes, nos ballons allient durabilité, précision et réactivité pour des sessions de jeu inoubliables.
+                     Que ce soit pour un entraînement professionnel ou des sessions amicales, nos ballons de football vous offrent une expérience de jeu exceptionnelle pour exprimer pleinement votre talent sur le terrain.</p>
+                    
+                    <a href="{{ path('products_by_category', {'categorie': 'ballon'}) }}" class="btn btn-primary">Découvrir</a>
                 </div>
             </div>
         </div>
     </div>
-</div><br><br>
+</div> 
+<br><br>
 
 
 {% endblock %}
@@ -262,7 +251,7 @@
         <!-- Footer-->
 
 {% block footer %}
-<footer style="height: 200px; background-color: #007bff; color: #ffffff;">
+<footer style="height: auto; background-color: #007bff; color: #ffffff;">
     <div class="container-fluid">
         <div class="row text text-white">
             <div class="col-md-4">
@@ -279,6 +268,7 @@
                 <ul class="list-group">
                     <li class="list-group-item bg-transparent border-0 mb-2"><a href="tel:+123456789" class="text-white">Téléphone</a></li>
                     <li class="list-group-item bg-transparent border-0 mb-2"><a href="mailto:contact@example.com" class="text-white">E-mail</a></li>
+                    <p><i class="fas fa-map-marker-alt"></i> 11 avenue de l'europe </p>
                 </ul>
             </div>
 
@@ -287,6 +277,7 @@
                 <ul class="list-group">
                     <li class="list-group-item bg-transparent border-0 mb-2"><a href="https://www.facebook.com/votrepage" target="_blank" class="text-white"><i class="fa-brands fa-facebook fa-xl" style="color: #fff;"></i></a></li>
                     <li class="list-group-item bg-transparent border-0 mb-2"><a href="https://www.instagram.com/votrecompte" target="_blank" class="text-white"><i class="fa-brands fa-instagram fa-xl" style="color: #fff;"></i></a></li>
+                    <li class="list-group-item bg-transparent border-0 mb-2"><a href="https://www.tiktok.com/votrecompte" target="_blank" class="text-white"><i class="fa-brands fa-tiktok fa-xl" style="color: #fff;"></i></a></li>
                     <!-- Ajoutez les liens vers d'autres réseaux sociaux ici -->
                 </ul>
             </div>

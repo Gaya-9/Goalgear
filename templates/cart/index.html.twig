@@ -3,11 +3,11 @@
 {% block title %}Panier{% endblock %}
 
 {% block body %}
-<div class="container mt-4">
+<div id="panier" class="container mt-4">
 {# {% dump(items) %} #}
 {% if items is empty %}
 
-<p><b>Votre panier est vide</b></p>
+<h1 style="text-align: center;"><b>Votre panier est vide</b></h1>
 
 {% else %}
 
